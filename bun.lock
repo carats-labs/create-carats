@@ -4,10 +4,12 @@
   "workspaces": {
     "": {
       "name": "create-carats",
-      "devDependencies": {
+      "dependencies": {
         "@clack/prompts": "latest",
-        "@types/bun": "latest",
         "picocolors": "latest",
+      },
+      "devDependencies": {
+        "@types/bun": "latest",
       },
       "peerDependencies": {
         "typescript": "^5",
