@@ -40,7 +40,7 @@ async function main() {
   console.log(pc.yellow(`� Polishing your Carats gem into ${projectName}...`));
 
   try {
-    await $`npx degit ufukbakan/vite-jjsx-ssr#carats ${projectName}`;
+    await $`bunx degit ufukbakan/vite-jjsx-ssr#carats ${projectName}`;
     outro(pc.green(`✅ Successfully created ${projectName}!`));
     console.log(pc.cyan("\nNext steps:"));
     console.log(pc.cyan(`  cd ${projectName}`));
