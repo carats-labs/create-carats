@@ -1,9 +1,9 @@
 #!/usr/bin/env bun
 
-import { parseArgs } from "util";
-import { intro, text, select, confirm, outro, spinner } from "@clack/prompts";
-import pc from "picocolors";
+import { confirm, intro, outro, select, spinner, text } from "@clack/prompts";
 import degit from "degit";
+import pc from "picocolors";
+import { parseArgs } from "util";
 
 async function main() {
   const { values } = parseArgs({
@@ -57,7 +57,7 @@ async function main() {
   s.start(pc.magenta("✧") + pc.dim(` Faceting your project into ./${projectName}...`));
 
   try {
-    const emitter = degit(repo, { cache: true, force: true });
+    const emitter = degit(repo, { cache: false, force: true, verbose: true });
     await emitter.clone(projectName);
     s.stop(pc.green(`✅ ${projectName} has been successfully cut and polished.`));
 
@@ -97,6 +97,9 @@ async function main() {
   } catch (error) {
     s.stop(pc.red("The forge encountered an error."));
     outro(pc.red(`Error: ${(error as Error).message}`));
+    if ((error as Error).stack) {
+      outro(pc.red((error as Error).stack!.split('\n').map(line => '  ' + line).join('\n')));
+    }
     process.exit(1);
   }
 }
