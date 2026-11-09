@@ -51,7 +51,7 @@ async function main() {
 
   if (typeof architecture === 'symbol') process.exit(0);
 
-  const repo = architecture === 'ssr' ? 'ufukbakan/vite-jjsx-ssr#carats' : 'ufukbakan/vite-jjsx#carats';
+  const repo = architecture === 'ssr' ? 'carats-labs/template-ssr#master' : 'carats-labs/template#master';
   
   const s = spinner();
   s.start(pc.magenta("✧") + pc.dim(` Faceting your project into ./${projectName}...`));
